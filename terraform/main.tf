@@ -80,5 +80,5 @@ module "eks" {
 
   # Allow current caller (your IAM user/role) to manage the cluster
   enable_cluster_creator_admin_permissions = true
-  
+
 }
