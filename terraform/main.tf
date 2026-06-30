@@ -10,7 +10,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  azs = slice(aws_availability_zones.available.name, 0, 3) 
+  azs = slice(data.aws_availability_zones.available.names, 0, 3) 
 }
 
 # ---- VPC ----
@@ -58,7 +58,7 @@ module "eks" {
   endpoint_public_access  = true
   endpoint_private_access = true
 
-  vpc_id     = module.vpc.default_vpc_id
+  vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
   # Auth mode required for Auto Mode
